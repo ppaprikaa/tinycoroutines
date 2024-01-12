@@ -14,8 +14,6 @@ void Coroutine::Suspend() {
     switch (status_) {
     case CoroutineStatus::Running:
         break;
-    case CoroutineStatus::ReadyToExit:
-        break;
     default:
         return;
     }
@@ -52,6 +50,17 @@ void Coroutine::Resume() {
 
 void Coroutine::Run() noexcept {
     routine_();
-    status_ = CoroutineStatus::ReadyToExit;
-    Suspend();
+	Exit();
+}
+
+void Coroutine::Exit() {
+    switch (status_) {
+    case CoroutineStatus::Running:
+        break;
+    default:
+        return;
+    }
+
+    status_ = CoroutineStatus::Exited;
+    current_.SwitchTo(to_resume_);
 }

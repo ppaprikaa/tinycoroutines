@@ -5,5 +5,5 @@ enum class CoroutineStatus {
     ReadyToCall,
     Running,
     Suspended,
-    ReadyToExit
+	Exited
 };

@@ -14,7 +14,7 @@ int main(int argc, char* argv[]) {
 			});
 
 	func(1);
-	cr.Resume();
+	cr.Call();
 	func(3);
 	cr.Resume();
 	func(5);

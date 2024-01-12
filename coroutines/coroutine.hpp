@@ -13,14 +13,18 @@ class Coroutine : public ITrampoline {
 
     CoroutineStatus Status() { return status_; }
 
-    void Suspend();
     void Call();
+
     void Resume();
+
+    void Suspend();
 
   private:
     void SetupCoroutineContext();
+
     void Run() noexcept override;
 
+	void Exit();
   private:
     CoroutineStatus status_;
     Stack stack_;

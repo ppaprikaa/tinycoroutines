@@ -24,7 +24,8 @@ class Coroutine : public ITrampoline {
 
     void Run() noexcept override;
 
-	void Exit();
+    void Exit();
+
   private:
     CoroutineStatus status_;
     Stack stack_;

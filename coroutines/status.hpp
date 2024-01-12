@@ -1,8 +1,3 @@
 #pragma once
 
-enum class CoroutineStatus {
-    NotCalled,
-    Running,
-    Suspended,
-	Exited
-};
+enum class CoroutineStatus { NotCalled, Running, Suspended, Exited };

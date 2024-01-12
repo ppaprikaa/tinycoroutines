@@ -11,24 +11,24 @@ Coroutine::Coroutine(std::function<void()> routine)
 }
 
 void Coroutine::Suspend() {
-	if(status_ != CoroutineStatus::Running)
-		return;
+    if (status_ != CoroutineStatus::Running)
+        return;
 
     status_ = CoroutineStatus::Suspended;
     current_.SwitchTo(to_resume_);
 }
 
 void Coroutine::Call() {
-	if(status_ != CoroutineStatus::NotCalled)
-		return;
+    if (status_ != CoroutineStatus::NotCalled)
+        return;
 
     status_ = CoroutineStatus::Running;
-	to_resume_.SwitchTo(current_);
+    to_resume_.SwitchTo(current_);
 }
 
 void Coroutine::Resume() {
-	if (status_ != CoroutineStatus::Suspended)
-		return;
+    if (status_ != CoroutineStatus::Suspended)
+        return;
 
     status_ = CoroutineStatus::Running;
     to_resume_.SwitchTo(current_);
@@ -36,12 +36,12 @@ void Coroutine::Resume() {
 
 void Coroutine::Run() noexcept {
     routine_();
-	Exit();
+    Exit();
 }
 
 void Coroutine::Exit() {
-	if (status_ != CoroutineStatus::Running)
-		return;
+    if (status_ != CoroutineStatus::Running)
+        return;
 
     status_ = CoroutineStatus::Exited;
     current_.SwitchTo(to_resume_);

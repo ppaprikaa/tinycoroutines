@@ -1,11 +1,10 @@
 #pragma once
 
-#include "coroutines/routine.hpp"
-#include "coroutines/status.hpp"
+#include <coroutines/routine.hpp>
+#include <coroutines/status.hpp>
 #include <ctx/context.hpp>
 #include <ctx/trampoline.hpp>
 #include <ctx/stack/stack.hpp>
-#include <functional>
 
 class Coroutine : public ITrampoline {
 public:
@@ -17,10 +16,9 @@ public:
 	}
 
 	void Suspend();
-	
 	void Call();
-
 	void Resume();
+
 private:
 	void SetupCoroutineContext();
 	void Run() noexcept override;

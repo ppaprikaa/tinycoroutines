@@ -4,7 +4,7 @@
 #include <coroutines/coroutine.hpp>
 #include <functional>
 
-Coroutine::Coroutine(std::function<void()> routine) : routine_(routine), stack_(Stack::AllocateBytes(4096)) {
+Coroutine::Coroutine(std::function<void()> routine) : routine_(routine), stack_(Stack::AllocateBytes(2097152)) {
 	current_.Setup(stack_.MutableView(), this);
 	status_ = CoroutineStatus::NotCalled;
 }

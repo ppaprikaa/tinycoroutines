@@ -1,5 +1,6 @@
 #pragma once
 
+#include "coroutines/routine.hpp"
 #include "coroutines/status.hpp"
 #include <ctx/context.hpp>
 #include <ctx/trampoline.hpp>
@@ -28,5 +29,5 @@ private:
 	Stack stack_;
 	Context to_resume_;
 	Context current_;
-	std::function<void()> routine_;
+	Routine routine_;
 };

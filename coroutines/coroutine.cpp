@@ -17,6 +17,8 @@ void Coroutine::Suspend() {
     current_.SwitchTo(to_resume_);
 }
 
+void Coroutine::operator()() { Call(); }
+
 void Coroutine::Call() {
     if (status_ != CoroutineStatus::NotCalled)
         return;

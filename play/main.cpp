@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
     });
 
     func(1);
-    cr.Call();
+    cr();
     func(3);
     cr.Resume();
     func(5);

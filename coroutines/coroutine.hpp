@@ -11,6 +11,11 @@ class Coroutine : public ITrampoline {
     Coroutine() = delete;
     Coroutine(Routine routine);
 
+    Coroutine(Coroutine &coroutine) = delete;
+    Coroutine &operator=(Coroutine &coroutine) = delete;
+
+    void operator()();
+
     CoroutineStatus Status() { return status_; }
 
     void Call();

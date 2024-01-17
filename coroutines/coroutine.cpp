@@ -1,11 +1,10 @@
 #include <coroutines/coroutine.hpp>
 #include <coroutines/status.hpp>
 #include <ctx/stack/stack.hpp>
-#include <functional>
 #include <mmap-allocator/pagesize.hpp>
 
-Coroutine::Coroutine(std::function<void()> routine)
-    : routine_(routine), stack_(Stack::AllocateBytes(2097152)) {
+Coroutine::Coroutine(Routine routine)
+    : routine_(std::move(routine)), stack_(Stack::AllocateBytes(2097152)) {
     current_.Setup(stack_.MutableView(), this);
     status_ = CoroutineStatus::NotCalled;
 }

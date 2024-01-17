@@ -9,7 +9,7 @@
 class Coroutine : public ITrampoline {
   public:
     Coroutine() = delete;
-    Coroutine(std::function<void()> routine);
+    Coroutine(Routine routine);
 
     CoroutineStatus Status() { return status_; }
 

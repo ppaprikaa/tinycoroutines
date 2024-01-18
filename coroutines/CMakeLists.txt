@@ -2,6 +2,8 @@ get_filename_component(LIB_INCLUDE_PATH ".." ABSOLUTE)
 get_filename_component(LIB_PATH "." ABSOLUTE)
 
 add_library(${LIB_TARGET} STATIC 
+	status.hpp
+	routine.hpp
 	coroutine.hpp
 	coroutine.cpp
 	)

@@ -10,6 +10,7 @@ class Coroutine : public ITrampoline {
   public:
     Coroutine() = delete;
     Coroutine(Routine routine);
+    Coroutine(Routine routine, Stack stack);
 
     Coroutine(Coroutine &coroutine) = delete;
     Coroutine &operator=(Coroutine &coroutine) = delete;

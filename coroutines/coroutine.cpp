@@ -9,6 +9,12 @@ Coroutine::Coroutine(Routine routine)
     status_ = CoroutineStatus::NotCalled;
 }
 
+Coroutine::Coroutine(Routine routine, Stack stack)
+    : routine_(std::move(routine)), stack_(std::move(stack)) {
+    current_.Setup(stack_.MutableView(), this);
+    status_ = CoroutineStatus::NotCalled;
+}
+
 void Coroutine::Suspend() {
     if (status_ != CoroutineStatus::Running)
         return;

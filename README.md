@@ -47,3 +47,12 @@ int main(int argc, char *argv[]) {
     return EXIT_SUCCESS;
 }
 ```
+
+output:
+```
+NUM: 1
+NUM: 2
+NUM: 3
+NUM: 4
+NUM: 5
+```
